@@ -4,7 +4,7 @@ const PasswordRets= require('../models/passwordRet');
 const authenticate= require('../authenticate');
 const mongoose = require('mongoose');
 var User= require('../models/user');
-
+var config = require('../config.js');
 const passport=require('passport');
 
 const passwordRetRouter= express.Router();
@@ -15,12 +15,12 @@ var config=require('../config');
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 const oauth2Client = new OAuth2(
-    "72127773199-amelar8j5711ejjeu68vvjmd6r5qjsm3.apps.googleusercontent.com",
-    "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",
+    config.OAuth1,
+    config.OAuth2,
     "https://developers.google.com/oauthplayground" 
 );
 oauth2Client.setCredentials({
-    refresh_token: "1//04TnvobtmBVUzCgYIARAAGAQSNwF-L9IrKSPcxBmLbcE0FGDHLIbu8Oe2hdZxquP2HnodweiJuCHrPi75LzHH83bP9ZzVhmJLR2c"
+    refresh_token: config.refreshToken
 });
 const accessToken = oauth2Client.getAccessToken()
 
