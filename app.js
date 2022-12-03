@@ -1,3 +1,4 @@
+var dotenv = require('dotenv').config({path: __dirname + '/.env'})
 var createError = require('http-errors');
 var express = require('express');
 var cors= require('cors');
@@ -13,7 +14,7 @@ var favoriteMovieRouter= require('./routes/favoritemovieRouter');
 const authenticate=require('./authenticate');
 var app = express();
 const mongoose=require('mongoose');
-const MONGODB_URI ='mongodb+srv://Admin_url_shortner:yashu_909@urlshortner.dnbzc.mongodb.net/movieApp_Database?retryWrites=true&w=majority';
+const MONGODB_URI =process.env['mongoUrl'];
 const url = 'mongodb://localhost:27017/conFusion';
 mongoose.connect(MONGODB_URI,{
   useNewUrlParser: true,
