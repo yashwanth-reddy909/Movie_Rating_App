@@ -7,7 +7,7 @@ var jwt = require('jsonwebtoken');
 
 var express=require('express');
 var app=express();
-var config = require('./config.js');
+require('dotenv').config({path: __dirname + '/.env'})
 
 exports.local=passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
@@ -21,7 +21,7 @@ exports.getToken = function(user) {
 
 var opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = config.secretKey;
+opts.secretOrKey = process.env['secretKey'];
 
 exports.jwtPassport = passport.use(new JwtStrategy(opts,
     (jwt_payload, done) => {
