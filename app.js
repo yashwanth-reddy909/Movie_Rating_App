@@ -14,7 +14,7 @@ var favoriteMovieRouter= require('./routes/favoritemovieRouter');
 const authenticate=require('./authenticate');
 var app = express();
 const mongoose=require('mongoose');
-const MONGODB_URI =process.env.MONGOURL;
+const MONGODB_URI =process.env.MONGO_URL;
 const url = 'mongodb://localhost:27017/conFusion';
 mongoose.connect(MONGODB_URI,{
   useNewUrlParser: true,
